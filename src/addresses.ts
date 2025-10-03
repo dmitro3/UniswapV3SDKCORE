@@ -1,4 +1,4 @@
-import { ChainId, SupportedChainsType } from './chains'
+import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from './chains'
 
 type AddressMap = { [chainId: number]: string }
 
@@ -32,22 +32,18 @@ export const UNI_ADDRESSES: AddressMap = constructSameAddressMap('0x1f9840a85d5a
 
 export const UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = '0x8B799381ac40b838BBA4131ffB26197C432AFe78'
 
-// 🧩 Default Uniswap V2 addresses
 export const V2_FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
 export const V2_ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
-
-// 🧩 Add Plasma V2 factory/router
 export const V2_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V2_FACTORY_ADDRESS),
-  [ChainId.PLASMA]: '0xCC53344d85bD28feC5a0E41f387f66b38e254E95'
+  [ChainId.PLASMA]: '0x32d701e7fB12C6AfDb2D6E0F8a24cbA3d6908e3d' // 🧩 Plasma V2 factory
 }
 
 export const V2_ROUTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V2_ROUTER_ADDRESS),
-  [ChainId.PLASMA]: '0x35F587a587a9e6900B928b2fBbB5A701fCB0a3ee'
+  [ChainId.PLASMA]: '0x21aBc421C1D3c7F1c7109C356f651DA3B66B4062' // 🧩 Plasma V2 router
 }
-
-// 🌐 Default v3 addresses
+// Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
 const DEFAULT_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0x1F98431c8aD98523631AE4a59f267346ea31F984',
   multicallAddress: '0x1F98415757620B543A52E61c46B32eB19261F984',
@@ -55,12 +51,10 @@ const DEFAULT_ADDRESSES: ChainAddresses = {
   v3MigratorAddress: '0xA5644E29708357803b5A882D272c41cC0dF92B34',
   nonfungiblePositionManagerAddress: '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
 }
-
 const MAINNET_ADDRESSES: ChainAddresses = {
   ...DEFAULT_ADDRESSES,
   v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E'
 }
-
 const GOERLI_ADDRESSES: ChainAddresses = {
   ...DEFAULT_ADDRESSES,
   v1MixedRouteQuoterAddress: '0xBa60b6e6fF25488308789E6e0A65D838be34194e'
@@ -74,18 +68,7 @@ const ARBITRUM_ONE_ADDRESSES: ChainAddresses = {
 }
 const POLYGON_ADDRESSES: ChainAddresses = DEFAULT_ADDRESSES
 
-// ✅ Plasma chain addresses (your deployment)
-const PLASMA_ADDRESSES: ChainAddresses = {
-  v3CoreFactoryAddress: '0xa899b9F40c484Dbb02D7F81B90654A24730c0255',
-  multicallAddress: '0x220891744Bb5B627714413204ab70335c11F600C',
-  quoterAddress: '0x280Aa0970a4E05580514E6a4E20961CdD73666dE',
-  v3MigratorAddress: '0x892B2FA512c162778615C6666ce8464Cf28E2AE0',
-  nonfungiblePositionManagerAddress: '0x6A17E17Df8B50EE01214FbE0A2E2599b13555565',
-  tickLensAddress: '0x5F6CC355AD25C3bEB08b1c892aE1D0aE2c833c0F',
-  swapRouter02Address: '0x4bc78B69Db623c9c43AC7c493D3c84eA77F39FC2'
-}
-
-// 💡 Other chains (keep same as your original)
+// celo v3 addresses
 const CELO_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0xAfE208a311B21f13EF87E33A90049fC17A7acDEc',
   multicallAddress: '0x633987602DE5C4F337e3DbF265303A1080324204',
@@ -94,6 +77,17 @@ const CELO_ADDRESSES: ChainAddresses = {
   nonfungiblePositionManagerAddress: '0x3d79EdAaBC0EaB6F08ED885C05Fc0B014290D95A',
   tickLensAddress: '0x5f115D9113F88e0a0Db1b5033D90D4a9690AcD3D'
 }
+const PLASMA_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0xa899b9F40c484Dbb02D7F81B90654A24730c0255',
+  multicallAddress: '0x220891744Bb5B627714413204ab70335c11F600C',
+  quoterAddress: '0x280Aa0970a4E05580514E6a4E20961CdD73666dE',
+  v3MigratorAddress: '0x892B2FA512c162778615C6666ce8464Cf28E2AE0',
+  nonfungiblePositionManagerAddress: '0x6A17E17Df8B50EE01214FbE0A2E2599b13555565',
+  tickLensAddress: '0x5F6CC355AD25C3bEB08b1c892aE1D0aE2c833c0F',
+  swapRouter02Address: '0x4bc78B69Db623c9c43AC7c493D3c84eA77F39FC2',
+}
+
+// BNB v3 addresses
 const BNB_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
   multicallAddress: '0x963Df249eD09c358A4819E39d9Cd5736c3087184',
@@ -103,6 +97,8 @@ const BNB_ADDRESSES: ChainAddresses = {
   tickLensAddress: '0xD9270014D396281579760619CCf4c3af0501A47C',
   swapRouter02Address: '0xB971eF87ede563556b2ED4b1C0b0019111Dd85d2'
 }
+
+// optimism goerli addresses
 const OPTIMISM_GOERLI_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0xB656dA17129e7EB733A557f4EBc57B76CFbB5d10',
   multicallAddress: '0x07F2D8a2a02251B62af965f22fC4744A5f96BCCd',
@@ -111,6 +107,8 @@ const OPTIMISM_GOERLI_ADDRESSES: ChainAddresses = {
   nonfungiblePositionManagerAddress: '0x39Ca85Af2F383190cBf7d7c41ED9202D27426EF6',
   tickLensAddress: '0xe6140Bd164b63E8BfCfc40D5dF952f83e171758e'
 }
+
+// arbitrum goerli v3 addresses
 const ARBITRUM_GOERLI_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0x4893376342d5D7b3e31d4184c08b265e5aB2A3f6',
   multicallAddress: '0x8260CB40247290317a4c062F3542622367F206Ee',
@@ -119,6 +117,8 @@ const ARBITRUM_GOERLI_ADDRESSES: ChainAddresses = {
   nonfungiblePositionManagerAddress: '0x622e4726a167799826d1E1D150b076A7725f5D81',
   tickLensAddress: '0xb52429333da969a0C79a60930a4Bf0020E5D1DE8'
 }
+
+// sepolia v3 addresses
 const SEPOLIA_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0x0227628f3F023bb0B980b67D528571c95c6DaC1c',
   multicallAddress: '0xD7F33bCdb21b359c8ee6F0251d30E94832baAd07',
@@ -127,6 +127,8 @@ const SEPOLIA_ADDRESSES: ChainAddresses = {
   nonfungiblePositionManagerAddress: '0x1238536071E1c677A632429e3655c799b22cDA52',
   tickLensAddress: '0xd7f33bcdb21b359c8ee6f0251d30e94832baad07'
 }
+
+// Avalanche v3 addresses
 const AVALANCHE_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0x740b1c1de25031C31FF4fC9A62f554A55cdC1baD',
   multicallAddress: '0x0139141Cd4Ee88dF3Cdb65881D411bAE271Ef0C2',
@@ -136,6 +138,8 @@ const AVALANCHE_ADDRESSES: ChainAddresses = {
   tickLensAddress: '0xEB9fFC8bf81b4fFd11fb6A63a6B0f098c6e21950',
   swapRouter02Address: '0xbb00FF08d01D300023C629E8fFfFcb65A5a578cE'
 }
+
+// Base Goerli v3 addresses
 const BASE_GOERLI_ADDRESSES: ChainAddresses = {
   v3CoreFactoryAddress: '0x9323c1d6D800ed51Bd7C6B216cfBec678B7d0BC2',
   multicallAddress: '0xB206027a9E0E13F05eBEFa5D2402Bab3eA716439',
@@ -146,7 +150,6 @@ const BASE_GOERLI_ADDRESSES: ChainAddresses = {
   swapRouter02Address: '0x8357227D4eDc78991Db6FDB9bD6ADE250536dE1d'
 }
 
-// 🗺️ Map
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.MAINNET]: MAINNET_ADDRESSES,
   [ChainId.OPTIMISM]: OPTIMISM_ADDRESSES,
@@ -165,6 +168,103 @@ export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses>
   [ChainId.BASE_GOERLI]: BASE_GOERLI_ADDRESSES
 }
 
+/* V3 Contract Addresses */
+export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].v3CoreFactoryAddress
+    return memo
+  }, {})
+}
+
+export const V3_MIGRATOR_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    const v3MigratorAddress = CHAIN_TO_ADDRESSES_MAP[chainId].v3MigratorAddress
+    if (v3MigratorAddress) {
+      memo[chainId] = v3MigratorAddress
+    }
+    return memo
+  }, {})
+}
+
+export const MULTICALL_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].multicallAddress
+    return memo
+  }, {})
+}
+
+/**
+ * The oldest V0 governance address
+ */
+export const GOVERNANCE_ALPHA_V0_ADDRESSES: AddressMap = constructSameAddressMap(
+  '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
+)
+/**
+ * The older V1 governance address
+ */
+export const GOVERNANCE_ALPHA_V1_ADDRESSES: AddressMap = {
+  [ChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6'
+}
+/**
+ * The latest governor bravo that is currently admin of timelock
+ */
+export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
+  [ChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3'
+}
+
+export const TIMELOCK_ADDRESSES: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
+
+export const MERKLE_DISTRIBUTOR_ADDRESS: AddressMap = {
+  [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
+}
+
+export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {
+  [ChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8'
+}
+
+export const QUOTER_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].quoterAddress
+    return memo
+  }, {})
+}
+
+export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    const nonfungiblePositionManagerAddress = CHAIN_TO_ADDRESSES_MAP[chainId].nonfungiblePositionManagerAddress
+    if (nonfungiblePositionManagerAddress) {
+      memo[chainId] = nonfungiblePositionManagerAddress
+    }
+    return memo
+  }, {})
+}
+
+export const ENS_REGISTRAR_ADDRESSES: AddressMap = {
+  ...constructSameAddressMap('0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e')
+}
+
+export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
+  [ChainId.MAINNET]: '0x65770b5283117639760beA3F867b69b3697a91dd'
+}
+
+export const TICK_LENS_ADDRESSES: AddressMap = {
+  ...SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+    const tickLensAddress = CHAIN_TO_ADDRESSES_MAP[chainId].tickLensAddress
+    if (tickLensAddress) {
+      memo[chainId] = tickLensAddress
+    }
+    return memo
+  }, {})
+}
+
+export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = SUPPORTED_CHAINS.reduce<AddressMap>((memo, chainId) => {
+  const v1MixedRouteQuoterAddress = CHAIN_TO_ADDRESSES_MAP[chainId].v1MixedRouteQuoterAddress
+  if (v1MixedRouteQuoterAddress) {
+    memo[chainId] = v1MixedRouteQuoterAddress
+  }
+  return memo
+}, {})
+
 // ✅ Router02 override
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number) => {
   if (chainId == ChainId.BNB || chainId == ChainId.PLASMA) {
@@ -172,3 +272,4 @@ export const SWAP_ROUTER_02_ADDRESSES = (chainId: number) => {
   }
   return '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'
 }
+

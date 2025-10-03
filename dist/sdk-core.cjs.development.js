@@ -86,7 +86,7 @@ var SUPPORTED_CHAINS = [exports.ChainId.MAINNET, exports.ChainId.OPTIMISM, expor
   NativeCurrencyName["AVAX"] = "AVAX";
 })(exports.NativeCurrencyName || (exports.NativeCurrencyName = {}));
 
-var _extends2, _extends3, _CHAIN_TO_ADDRESSES_M;
+var _extends2, _extends3, _CHAIN_TO_ADDRESSES_M, _GOVERNANCE_ALPHA_V1_, _GOVERNANCE_BRAVO_ADD, _MERKLE_DISTRIBUTOR_A, _ARGENT_WALLET_DETECT, _SOCKS_CONTROLLER_ADD;
 var DEFAULT_NETWORKS = [exports.ChainId.MAINNET, exports.ChainId.GOERLI];
 
 function constructSameAddressMap(address, additionalNetworks) {
@@ -101,13 +101,11 @@ function constructSameAddressMap(address, additionalNetworks) {
 }
 
 var UNI_ADDRESSES = /*#__PURE__*/constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984', [exports.ChainId.OPTIMISM, exports.ChainId.ARBITRUM_ONE, exports.ChainId.POLYGON, exports.ChainId.POLYGON_MUMBAI, exports.ChainId.SEPOLIA]);
-var UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = '0x8B799381ac40b838BBA4131ffB26197C432AFe78'; // 🧩 Default Uniswap V2 addresses
-
+var UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = '0x8B799381ac40b838BBA4131ffB26197C432AFe78';
 var V2_FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
-var V2_ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'; // 🧩 Add Plasma V2 factory/router
-
-var V2_FACTORY_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_FACTORY_ADDRESS), (_extends2 = {}, _extends2[exports.ChainId.PLASMA] = '0xCC53344d85bD28feC5a0E41f387f66b38e254E95', _extends2));
-var V2_ROUTER_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_ROUTER_ADDRESS), (_extends3 = {}, _extends3[exports.ChainId.PLASMA] = '0x35F587a587a9e6900B928b2fBbB5A701fCB0a3ee', _extends3)); // 🌐 Default v3 addresses
+var V2_ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
+var V2_FACTORY_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_FACTORY_ADDRESS), (_extends2 = {}, _extends2[exports.ChainId.PLASMA] = '0x32d701e7fB12C6AfDb2D6E0F8a24cbA3d6908e3d', _extends2));
+var V2_ROUTER_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_ROUTER_ADDRESS), (_extends3 = {}, _extends3[exports.ChainId.PLASMA] = '0x21aBc421C1D3c7F1c7109C356f651DA3B66B4062', _extends3)); // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
 
 var DEFAULT_ADDRESSES = {
   v3CoreFactoryAddress: '0x1F98431c8aD98523631AE4a59f267346ea31F984',
@@ -132,17 +130,7 @@ var ARBITRUM_ONE_ADDRESSES = /*#__PURE__*/_extends({}, DEFAULT_ADDRESSES, {
   tickLensAddress: '0xbfd8137f7d1516D3ea5cA83523914859ec47F573'
 });
 
-var POLYGON_ADDRESSES = DEFAULT_ADDRESSES; // ✅ Plasma chain addresses (your deployment)
-
-var PLASMA_ADDRESSES = {
-  v3CoreFactoryAddress: '0xa899b9F40c484Dbb02D7F81B90654A24730c0255',
-  multicallAddress: '0x220891744Bb5B627714413204ab70335c11F600C',
-  quoterAddress: '0x280Aa0970a4E05580514E6a4E20961CdD73666dE',
-  v3MigratorAddress: '0x892B2FA512c162778615C6666ce8464Cf28E2AE0',
-  nonfungiblePositionManagerAddress: '0x6A17E17Df8B50EE01214FbE0A2E2599b13555565',
-  tickLensAddress: '0x5F6CC355AD25C3bEB08b1c892aE1D0aE2c833c0F',
-  swapRouter02Address: '0x4bc78B69Db623c9c43AC7c493D3c84eA77F39FC2'
-}; // 💡 Other chains (keep same as your original)
+var POLYGON_ADDRESSES = DEFAULT_ADDRESSES; // celo v3 addresses
 
 var CELO_ADDRESSES = {
   v3CoreFactoryAddress: '0xAfE208a311B21f13EF87E33A90049fC17A7acDEc',
@@ -152,6 +140,16 @@ var CELO_ADDRESSES = {
   nonfungiblePositionManagerAddress: '0x3d79EdAaBC0EaB6F08ED885C05Fc0B014290D95A',
   tickLensAddress: '0x5f115D9113F88e0a0Db1b5033D90D4a9690AcD3D'
 };
+var PLASMA_ADDRESSES = {
+  v3CoreFactoryAddress: '0xa899b9F40c484Dbb02D7F81B90654A24730c0255',
+  multicallAddress: '0x220891744Bb5B627714413204ab70335c11F600C',
+  quoterAddress: '0x280Aa0970a4E05580514E6a4E20961CdD73666dE',
+  v3MigratorAddress: '0x892B2FA512c162778615C6666ce8464Cf28E2AE0',
+  nonfungiblePositionManagerAddress: '0x6A17E17Df8B50EE01214FbE0A2E2599b13555565',
+  tickLensAddress: '0x5F6CC355AD25C3bEB08b1c892aE1D0aE2c833c0F',
+  swapRouter02Address: '0x4bc78B69Db623c9c43AC7c493D3c84eA77F39FC2'
+}; // BNB v3 addresses
+
 var BNB_ADDRESSES = {
   v3CoreFactoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
   multicallAddress: '0x963Df249eD09c358A4819E39d9Cd5736c3087184',
@@ -160,7 +158,8 @@ var BNB_ADDRESSES = {
   nonfungiblePositionManagerAddress: '0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613',
   tickLensAddress: '0xD9270014D396281579760619CCf4c3af0501A47C',
   swapRouter02Address: '0xB971eF87ede563556b2ED4b1C0b0019111Dd85d2'
-};
+}; // optimism goerli addresses
+
 var OPTIMISM_GOERLI_ADDRESSES = {
   v3CoreFactoryAddress: '0xB656dA17129e7EB733A557f4EBc57B76CFbB5d10',
   multicallAddress: '0x07F2D8a2a02251B62af965f22fC4744A5f96BCCd',
@@ -168,7 +167,8 @@ var OPTIMISM_GOERLI_ADDRESSES = {
   v3MigratorAddress: '0xf6c55fBe84B1C8c3283533c53F51bC32F5C7Aba8',
   nonfungiblePositionManagerAddress: '0x39Ca85Af2F383190cBf7d7c41ED9202D27426EF6',
   tickLensAddress: '0xe6140Bd164b63E8BfCfc40D5dF952f83e171758e'
-};
+}; // arbitrum goerli v3 addresses
+
 var ARBITRUM_GOERLI_ADDRESSES = {
   v3CoreFactoryAddress: '0x4893376342d5D7b3e31d4184c08b265e5aB2A3f6',
   multicallAddress: '0x8260CB40247290317a4c062F3542622367F206Ee',
@@ -176,7 +176,8 @@ var ARBITRUM_GOERLI_ADDRESSES = {
   v3MigratorAddress: '0xA815919D2584Ac3F76ea9CB62E6Fd40a43BCe0C3',
   nonfungiblePositionManagerAddress: '0x622e4726a167799826d1E1D150b076A7725f5D81',
   tickLensAddress: '0xb52429333da969a0C79a60930a4Bf0020E5D1DE8'
-};
+}; // sepolia v3 addresses
+
 var SEPOLIA_ADDRESSES = {
   v3CoreFactoryAddress: '0x0227628f3F023bb0B980b67D528571c95c6DaC1c',
   multicallAddress: '0xD7F33bCdb21b359c8ee6F0251d30E94832baAd07',
@@ -184,7 +185,8 @@ var SEPOLIA_ADDRESSES = {
   v3MigratorAddress: '0x729004182cF005CEC8Bd85df140094b6aCbe8b15',
   nonfungiblePositionManagerAddress: '0x1238536071E1c677A632429e3655c799b22cDA52',
   tickLensAddress: '0xd7f33bcdb21b359c8ee6f0251d30e94832baad07'
-};
+}; // Avalanche v3 addresses
+
 var AVALANCHE_ADDRESSES = {
   v3CoreFactoryAddress: '0x740b1c1de25031C31FF4fC9A62f554A55cdC1baD',
   multicallAddress: '0x0139141Cd4Ee88dF3Cdb65881D411bAE271Ef0C2',
@@ -193,7 +195,8 @@ var AVALANCHE_ADDRESSES = {
   nonfungiblePositionManagerAddress: '0x655C406EBFa14EE2006250925e54ec43AD184f8B',
   tickLensAddress: '0xEB9fFC8bf81b4fFd11fb6A63a6B0f098c6e21950',
   swapRouter02Address: '0xbb00FF08d01D300023C629E8fFfFcb65A5a578cE'
-};
+}; // Base Goerli v3 addresses
+
 var BASE_GOERLI_ADDRESSES = {
   v3CoreFactoryAddress: '0x9323c1d6D800ed51Bd7C6B216cfBec678B7d0BC2',
   multicallAddress: '0xB206027a9E0E13F05eBEFa5D2402Bab3eA716439',
@@ -202,9 +205,78 @@ var BASE_GOERLI_ADDRESSES = {
   nonfungiblePositionManagerAddress: '0x3c61369ef0D1D2AFa70d8feC2F31C5D6Ce134F30',
   tickLensAddress: '0x1acB873Ee909D0c98adB18e4474943249F931b92',
   swapRouter02Address: '0x8357227D4eDc78991Db6FDB9bD6ADE250536dE1d'
-}; // 🗺️ Map
+};
+var CHAIN_TO_ADDRESSES_MAP = (_CHAIN_TO_ADDRESSES_M = {}, _CHAIN_TO_ADDRESSES_M[exports.ChainId.MAINNET] = MAINNET_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.OPTIMISM] = OPTIMISM_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.ARBITRUM_ONE] = ARBITRUM_ONE_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.POLYGON] = POLYGON_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.POLYGON_MUMBAI] = POLYGON_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.GOERLI] = GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.CELO] = CELO_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.CELO_ALFAJORES] = CELO_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.PLASMA] = PLASMA_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.BNB] = BNB_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.OPTIMISM_GOERLI] = OPTIMISM_GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.ARBITRUM_GOERLI] = ARBITRUM_GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.SEPOLIA] = SEPOLIA_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.AVALANCHE] = AVALANCHE_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.BASE_GOERLI] = BASE_GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M);
+/* V3 Contract Addresses */
 
-var CHAIN_TO_ADDRESSES_MAP = (_CHAIN_TO_ADDRESSES_M = {}, _CHAIN_TO_ADDRESSES_M[exports.ChainId.MAINNET] = MAINNET_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.OPTIMISM] = OPTIMISM_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.ARBITRUM_ONE] = ARBITRUM_ONE_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.POLYGON] = POLYGON_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.POLYGON_MUMBAI] = POLYGON_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.GOERLI] = GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.CELO] = CELO_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.CELO_ALFAJORES] = CELO_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.PLASMA] = PLASMA_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.BNB] = BNB_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.OPTIMISM_GOERLI] = OPTIMISM_GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.ARBITRUM_GOERLI] = ARBITRUM_GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.SEPOLIA] = SEPOLIA_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.AVALANCHE] = AVALANCHE_ADDRESSES, _CHAIN_TO_ADDRESSES_M[exports.ChainId.BASE_GOERLI] = BASE_GOERLI_ADDRESSES, _CHAIN_TO_ADDRESSES_M); // ✅ Router02 override
+var V3_CORE_FACTORY_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].v3CoreFactoryAddress;
+  return memo;
+}, {}));
+var V3_MIGRATOR_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  var v3MigratorAddress = CHAIN_TO_ADDRESSES_MAP[chainId].v3MigratorAddress;
+
+  if (v3MigratorAddress) {
+    memo[chainId] = v3MigratorAddress;
+  }
+
+  return memo;
+}, {}));
+var MULTICALL_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].multicallAddress;
+  return memo;
+}, {}));
+/**
+ * The oldest V0 governance address
+ */
+
+var GOVERNANCE_ALPHA_V0_ADDRESSES = /*#__PURE__*/constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F');
+/**
+ * The older V1 governance address
+ */
+
+var GOVERNANCE_ALPHA_V1_ADDRESSES = (_GOVERNANCE_ALPHA_V1_ = {}, _GOVERNANCE_ALPHA_V1_[exports.ChainId.MAINNET] = '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6', _GOVERNANCE_ALPHA_V1_);
+/**
+ * The latest governor bravo that is currently admin of timelock
+ */
+
+var GOVERNANCE_BRAVO_ADDRESSES = (_GOVERNANCE_BRAVO_ADD = {}, _GOVERNANCE_BRAVO_ADD[exports.ChainId.MAINNET] = '0x408ED6354d4973f66138C91495F2f2FCbd8724C3', _GOVERNANCE_BRAVO_ADD);
+var TIMELOCK_ADDRESSES = /*#__PURE__*/constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC');
+var MERKLE_DISTRIBUTOR_ADDRESS = (_MERKLE_DISTRIBUTOR_A = {}, _MERKLE_DISTRIBUTOR_A[exports.ChainId.MAINNET] = '0x090D4613473dEE047c3f2706764f49E0821D256e', _MERKLE_DISTRIBUTOR_A);
+var ARGENT_WALLET_DETECTOR_ADDRESS = (_ARGENT_WALLET_DETECT = {}, _ARGENT_WALLET_DETECT[exports.ChainId.MAINNET] = '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8', _ARGENT_WALLET_DETECT);
+var QUOTER_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  memo[chainId] = CHAIN_TO_ADDRESSES_MAP[chainId].quoterAddress;
+  return memo;
+}, {}));
+var NONFUNGIBLE_POSITION_MANAGER_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  var nonfungiblePositionManagerAddress = CHAIN_TO_ADDRESSES_MAP[chainId].nonfungiblePositionManagerAddress;
+
+  if (nonfungiblePositionManagerAddress) {
+    memo[chainId] = nonfungiblePositionManagerAddress;
+  }
+
+  return memo;
+}, {}));
+var ENS_REGISTRAR_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap('0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'));
+var SOCKS_CONTROLLER_ADDRESSES = (_SOCKS_CONTROLLER_ADD = {}, _SOCKS_CONTROLLER_ADD[exports.ChainId.MAINNET] = '0x65770b5283117639760beA3F867b69b3697a91dd', _SOCKS_CONTROLLER_ADD);
+var TICK_LENS_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  var tickLensAddress = CHAIN_TO_ADDRESSES_MAP[chainId].tickLensAddress;
+
+  if (tickLensAddress) {
+    memo[chainId] = tickLensAddress;
+  }
+
+  return memo;
+}, {}));
+var MIXED_ROUTE_QUOTER_V1_ADDRESSES = /*#__PURE__*/SUPPORTED_CHAINS.reduce(function (memo, chainId) {
+  var v1MixedRouteQuoterAddress = CHAIN_TO_ADDRESSES_MAP[chainId].v1MixedRouteQuoterAddress;
+
+  if (v1MixedRouteQuoterAddress) {
+    memo[chainId] = v1MixedRouteQuoterAddress;
+  }
+
+  return memo;
+}, {}); // ✅ Router02 override
 
 var SWAP_ROUTER_02_ADDRESSES = function SWAP_ROUTER_02_ADDRESSES(chainId) {
   if (chainId == exports.ChainId.BNB || chainId == exports.ChainId.PLASMA) {
@@ -900,16 +972,29 @@ function sqrt(value) {
   return z;
 }
 
+exports.ARGENT_WALLET_DETECTOR_ADDRESS = ARGENT_WALLET_DETECTOR_ADDRESS;
 exports.CHAIN_TO_ADDRESSES_MAP = CHAIN_TO_ADDRESSES_MAP;
 exports.CurrencyAmount = CurrencyAmount;
+exports.ENS_REGISTRAR_ADDRESSES = ENS_REGISTRAR_ADDRESSES;
 exports.Ether = Ether;
 exports.Fraction = Fraction;
+exports.GOVERNANCE_ALPHA_V0_ADDRESSES = GOVERNANCE_ALPHA_V0_ADDRESSES;
+exports.GOVERNANCE_ALPHA_V1_ADDRESSES = GOVERNANCE_ALPHA_V1_ADDRESSES;
+exports.GOVERNANCE_BRAVO_ADDRESSES = GOVERNANCE_BRAVO_ADDRESSES;
+exports.MERKLE_DISTRIBUTOR_ADDRESS = MERKLE_DISTRIBUTOR_ADDRESS;
+exports.MIXED_ROUTE_QUOTER_V1_ADDRESSES = MIXED_ROUTE_QUOTER_V1_ADDRESSES;
+exports.MULTICALL_ADDRESSES = MULTICALL_ADDRESSES;
 exports.MaxUint256 = MaxUint256;
+exports.NONFUNGIBLE_POSITION_MANAGER_ADDRESSES = NONFUNGIBLE_POSITION_MANAGER_ADDRESSES;
 exports.NativeCurrency = NativeCurrency;
 exports.Percent = Percent;
 exports.Price = Price;
+exports.QUOTER_ADDRESSES = QUOTER_ADDRESSES;
+exports.SOCKS_CONTROLLER_ADDRESSES = SOCKS_CONTROLLER_ADDRESSES;
 exports.SUPPORTED_CHAINS = SUPPORTED_CHAINS;
 exports.SWAP_ROUTER_02_ADDRESSES = SWAP_ROUTER_02_ADDRESSES;
+exports.TICK_LENS_ADDRESSES = TICK_LENS_ADDRESSES;
+exports.TIMELOCK_ADDRESSES = TIMELOCK_ADDRESSES;
 exports.Token = Token;
 exports.UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS;
 exports.UNI_ADDRESSES = UNI_ADDRESSES;
@@ -917,6 +1002,8 @@ exports.V2_FACTORY_ADDRESS = V2_FACTORY_ADDRESS;
 exports.V2_FACTORY_ADDRESSES = V2_FACTORY_ADDRESSES;
 exports.V2_ROUTER_ADDRESS = V2_ROUTER_ADDRESS;
 exports.V2_ROUTER_ADDRESSES = V2_ROUTER_ADDRESSES;
+exports.V3_CORE_FACTORY_ADDRESSES = V3_CORE_FACTORY_ADDRESSES;
+exports.V3_MIGRATOR_ADDRESSES = V3_MIGRATOR_ADDRESSES;
 exports.WETH9 = WETH9;
 exports.computePriceImpact = computePriceImpact;
 exports.sortedInsert = sortedInsert;
