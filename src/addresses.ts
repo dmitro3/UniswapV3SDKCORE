@@ -36,12 +36,12 @@ export const V2_FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
 export const V2_ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
 export const V2_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V2_FACTORY_ADDRESS),
-  [ChainId.PLASMA]: '0x32d701e7fB12C6AfDb2D6E0F8a24cbA3d6908e3d' // 🧩 Plasma V2 factory
+  [ChainId.PLASMA]: '0xCC53344d85bD28feC5a0E41f387f66b38e254E95' // 🧩 Plasma V2 factory
 }
 
 export const V2_ROUTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V2_ROUTER_ADDRESS),
-  [ChainId.PLASMA]: '0x21aBc421C1D3c7F1c7109C356f651DA3B66B4062' // 🧩 Plasma V2 router
+  [ChainId.PLASMA]: '0x35F587a587a9e6900B928b2fBbB5A701fCB0a3ee' // 🧩 Plasma V2 router
 }
 // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
 const DEFAULT_ADDRESSES: ChainAddresses = {

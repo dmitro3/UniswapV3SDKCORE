@@ -101,8 +101,8 @@ var UNI_ADDRESSES = /*#__PURE__*/constructSameAddressMap('0x1f9840a85d5aF5bf1D17
 var UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = '0x8B799381ac40b838BBA4131ffB26197C432AFe78';
 var V2_FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
 var V2_ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
-var V2_FACTORY_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_FACTORY_ADDRESS), (_extends2 = {}, _extends2[ChainId.PLASMA] = '0x32d701e7fB12C6AfDb2D6E0F8a24cbA3d6908e3d', _extends2));
-var V2_ROUTER_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_ROUTER_ADDRESS), (_extends3 = {}, _extends3[ChainId.PLASMA] = '0x21aBc421C1D3c7F1c7109C356f651DA3B66B4062', _extends3)); // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
+var V2_FACTORY_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_FACTORY_ADDRESS), (_extends2 = {}, _extends2[ChainId.PLASMA] = '0xCC53344d85bD28feC5a0E41f387f66b38e254E95', _extends2));
+var V2_ROUTER_ADDRESSES = /*#__PURE__*/_extends({}, /*#__PURE__*/constructSameAddressMap(V2_ROUTER_ADDRESS), (_extends3 = {}, _extends3[ChainId.PLASMA] = '0x35F587a587a9e6900B928b2fBbB5A701fCB0a3ee', _extends3)); // Networks that share most of the same addresses i.e. Mainnet, Goerli, Optimism, Arbitrum, Polygon
 
 var DEFAULT_ADDRESSES = {
   v3CoreFactoryAddress: '0x1F98431c8aD98523631AE4a59f267346ea31F984',
